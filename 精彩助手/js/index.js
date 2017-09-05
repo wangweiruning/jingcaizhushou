@@ -37,6 +37,9 @@ $(function(){
 			});
 			$(".yuan_one").show().velocity(
 				{"left":"1200px","translateZ" : "100px"},0).delay(600).velocity("reverse",1000);
+
+			$(".inner_c .erweima").show().velocity(
+				{"opacity":"0"},0).delay(600).velocity("reverse",1000);
 		}
 		outAnimateArr[0] = function(){
 			// console.log("我是0号页面的出场动画");
@@ -56,6 +59,7 @@ $(function(){
 				},400,function(){
 					$(this).velocity({"translateZ" : "0px" ,"opacity":"0"},0);
 				})
+			$(".inner_c .erweima").hide();
 		}
 
 
@@ -173,12 +177,36 @@ $(function(){
 
 
 		inAnimateArr[3] = function(){
-			console.log("我是3号页面的进场动画")
-			lock = true;
+			// console.log("我是3号页面的进场动画")
+			$(".footers").show();
+			$(".footers .foter_1").show().velocity({
+				"translateZ":"1500px",
+				"scale":"0.5"
+			},0).delay(400).velocity("reverse",1000,function(){
+				lock = true;
+			});
+			$(".footers .foter_2").show().velocity({
+				// "translateZ":"600px",
+				"rotateX":"360deg",
+			},0).delay(600).velocity("reverse",1000)
+
+			$(".footers .foter_3").show().velocity({
+				"right":"100px",
+				"translateZ":"1500px",
+				"rotateX":"360deg",
+			},0).delay(800).velocity("reverse",1000)
 		}
 		outAnimateArr[3] = function(){
-			console.log("我是3号页面的出场动画");
-			lock = true;
+			// console.log("我是3号页面的出场动画");
+			// lock = true;
+			$(".footers").hide();
+			$(".footers .foter_1").hide();
+			$(".footers .foter_2").hide();
+			$(".footers .foter_3").velocity({
+				"translateZ":"1400px",
+				},400,function(){
+					$(this).velocity({"translateZ" : "560px"},0).hide();
+				})
 		}
 
 
